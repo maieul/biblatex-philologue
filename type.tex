@@ -1,0 +1,37 @@
+\DeclareBibliographyDriver{inarticle}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{bybookauthor}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{maintitle}%
+  \newunit\newblock
+  \usebibmacro{in:}%
+  \usebibmacro{journal+issuetitle}%
+  \newunit
+  \usebibmacro{byeditor+others}%
+  \newunit
+  \usebibmacro{note+pages}%
+  \newunit\newblock
+  \iftoggle{bbx:isbn}
+    {\printfield{issn}}
+    {}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \usebibmacro{finentry}}
+\DeclareBibliographyAlias{bookinarticle}{inarticle}
+\DeclareFieldFormat[inarticle]{title}{\mkbibquote{#1\isdot}}
+\DeclareFieldFormat[inarticle,bookinarticle]{maintitle}{\mkbibquote{#1\isdot}}
+\DeclareBibliographyAlias{bookrepro}{book}

@@ -1,0 +1,117 @@
+
+\renewbibmacro{begentry}{\iffieldundef{titleaddon}{}{%
+	\iffieldxref{entrytype}{}%
+		{\BibliographyWarning{Sous-entrée n'étant pas du même type que l'entrée mère}}%
+		}%
+	\iffieldundef{crossref}{\iffieldundef{titleaddon}{}{\BibliographyWarning{Titleaddon sans crossref}}}{}%
+}
+\renewbibmacro*{cite}{%
+\iffieldundef{crossref}{}{\iffieldundef{crossref}{}%
+				{\iffieldundef{titleaddon}{}%
+					{\iffieldxref{entrytype}{%
+						\savefield{crossref}{\crossref}\restorefield{entrykey}{\crossref}%
+						}{}%
+		}}}%
+  \usebibmacro{cite:citepages}%
+  \global\togglefalse{cbx:fullcite}%
+  \global\togglefalse{cbx:loccit}%
+  \bibhypertarget{cite\the\value{instcount}}{%
+    \ifciteseen
+      {\iffieldundef{shorthand}
+         {\ifciteibid
+            {\usebibmacro{cite:ibid}}
+            {\ifthenelse{\ifciteidem\AND\NOT\boolean{cbx:noidem}}
+               {\usebibmacro{cite:idem}}
+               {\usebibmacro{cite:name}}%
+             \usebibmacro{cite:title}}%
+	  \usebibmacro{cite:save}}
+         {\usebibmacro{cite:shorthand}}}
+      {\usebibmacro{cite:full}%
+       \usebibmacro{cite:save}}}}
+
+\renewbibmacro*{cite:title}{%
+\usebibmacro{cite:full:citepages}%
+  \printtext[bibhyperlink]{%
+    \ifboolexpr{test{\ifsingletitle} and not (test {\iffieldundef{author}} and test{\iffieldequalstr{usera}{1}})}{}{\usebibmacro{title}}%
+    \setunit{\nametitledelim}%
+    \iffieldequalstr{usera}{1}{\usebibmacro{byeditor+others}}{}%
+    \bibstring[\mkibid]{opcit}}%
+  \iffieldequalstr{usera}{1}{%
+  	\setunit{\bibpagespunct}%
+  	\printfield{titleaddon}%
+  	\iffieldundef{titleaddon}{}{\setunit{\bibpagespunct}%
+  	\printfield{pages}}%
+	\newunit%
+	\printfield{addendum}%
+	}{}%
+}
+
+\renewbibmacro*{cite:ibid}{%
+\usebibmacro{cite:full:citepages}%
+  \printtext{%
+    \bibhyperlink{cite\csuse{cbx@lastcite@\thefield{entrykey}}}{%
+      \bibstring[\mkibid]{ibidem}}}%
+      \setunit{\bibpagespunct}%
+  	\printfield{titleaddon}%
+	\iffieldundef{titleaddon}{}{\setunit{\bibpagespunct}%
+  	\printfield{pages}}%
+  \ifloccit
+    {\global\toggletrue{cbx:loccit}}
+    {}}
+	       
+\DeclareLabelname[book, bookinbook, bookinarticle]{author}
+
+
+
+
+
+\renewbibmacro*{cite:name}{%
+  \ifnameundef{labelname}{}{\printnames{labelname}%
+  \setunit*{\nametitledelim}}}
+
+\makeatletter
+
+ \DeclareNameFormat{labelname}{%
+  \ifcase\value{uniquename}%
+    \usebibmacro{name:last}{#1}{#3}{#5}{#7}%
+  \or%
+    \ifuseprefix%
+      {\usebibmacro{name:first-last}{#1}{#4}{#5}{#8}}%
+      {\usebibmacro{name:first-last}{#1}{#4}{#6}{#8}}%
+  \or%
+    \usebibmacro{name:first-last}{#1}{#3}{#5}{#7}%
+  \fi%
+  \usebibmacro{name:andothers}}
+%
+% 
+  \renewbibmacro*{author}{%
+\ifboolexpr{%
+    test \ifuseauthor%
+    and%
+    not test {\ifnameundef{author}}%
+  }%
+    {\usebibmacro{bbx:dashcheck}%
+       {\bibnamedash}%
+       {\ifthenelse{\ifciteidem\AND\ifcitation}{\usebibmacro{cite:idem}}{\printnames{author}}%
+	\setunit{\addcomma\space}%
+	\usebibmacro{bbx:savehash}}%
+     \usebibmacro{authorstrg}}%
+    {\global\undef\bbx@lasthash}}
+
+\makeatother
+
+
+
+
+
+
+
+\renewbibmacro*{series+number}{%
+  \iffieldundef{year}{\iffieldundef{shortseries}{\printfield{series}}{\printfield{shortseries}}%
+  \setunit*{\addspace}%
+  \printfield{number}\newunit}{}%
+  }
+
+
+
+

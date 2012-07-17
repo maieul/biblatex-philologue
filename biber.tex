@@ -1,0 +1,15 @@
+\DeclareDataInheritance{*}{*}{
+	\inherit{entrysubtype}{entrysubtype}
+	\inherit{usera}{usera}
+}
+\DeclareDataInheritance{book}{inbook}{
+	\noinherit{sortname}
+}
+\DeclareDataInheritance{book}{bookrepro}{
+	\inherit{title}{title}
+	\inherit{author}{author}
+	\noinherit{pages}
+	\noinherit{series}
+	\noinherit{shortseries}
+	\noinherit{number}
+}

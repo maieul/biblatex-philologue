@@ -1,0 +1,49 @@
+\renewbibmacro{citeindex}{%
+\iffieldequalstr{usera}{1}{%
+	\printfield{namea}%
+	\ifciteindex{%
+		 %Index l'auteur
+	\ifnameundef{namea}{%
+		  	\indexnames[sources]{author}}%
+		  	{\indexnames[sources]{namea}}%
+		  \iffieldundef{indextitle}{%
+			\indexfield[sources]{title}%
+		  	}%
+		{%
+			\indexfield[sources]{indextitle}%
+		}%
+		\iffieldundef{titleaddon}{%
+			}%
+			{\indexfield[sources]{titleaddon}}%
+	}{}%
+	\sindex[sources]{---}%
+	}{}%
+}
+
+\DeclareIndexNameFormat{sources}{%
+  \usebibmacro{index:name}{\sindex[sources]}{#1}{#3}{#5}{#7}%
+}%
+
+\DeclareIndexFieldFormat{sources}{%
+	\sindex[sources]{#1@\emph{#1}}%
+}
+
+\DeclareCiteCommand{\citetitle}
+  {\boolfalse{citetracker}%
+   \boolfalse{pagetracker}%
+   \usebibmacro{prenote}}
+  {\ifciteindex
+     {\usebibmacro{citeindex}}
+     {}%
+   \printfield[citetitle]{labeltitle}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\citeauthor}
+  {\boolfalse{citetracker}%
+   \boolfalse{pagetracker}%
+   \usebibmacro{prenote}}
+  {
+   \printnames{labelname}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
