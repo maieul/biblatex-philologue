@@ -1,0 +1,41 @@
+\defbibcheck{shortseries}{%
+	\iffieldundef{shortseries}{\skipentry}{}%
+	\iffieldundef{series}{\skipentry}{%
+		\ifcsdef{\strfield{series}}{\skipentry}{\savefieldcs{series}{\strfield{series}}}%	
+			}% Verifier si pas déjà existant
+	}
+\DeclareSortingScheme{shortseries}{
+  \sort{
+  	\field{shortseries}
+  }
+  \sort{
+  	\field{series}
+  }
+}
+\makeatletter
+\DeclareBibliographyDriver{series}{
+	\printfield{series}
+}
+
+
+
+
+\newcommand{\shortserieswidth}{\shorthandwidth}
+\addtolength{\shortserieswidth}{4em}
+\defbibheading{shortseries}[Short series]{\section{#1}}
+\defbibenvironment{shortseries}
+  {\renewcommand{\blx@driver}[1]{\csuse{blx@bbx@series}}\list{\thefield{shortseries}%
+  }{%
+     \labelwidth\shorthandwidth
+     \labelsep\biblabelsep
+     \leftmargin\bibhang
+     \advance\leftmargin\labelsep
+     \itemsep\bibitemsep
+     \parsep\bibparsep
+     \def\makelabel##1{##1\hss}}}
+  {\endlist}
+  {\item}
+
+
+
+\makeatother
