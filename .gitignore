@@ -5,3 +5,5 @@
 *.fdb*
 *.aux
 *.log
+*.xml*
+*.*gz*
