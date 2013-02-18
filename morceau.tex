@@ -60,7 +60,7 @@
 \DeclareLabelname[book, bookinbook, bookinarticle]{author}
 
 
-
+\renewbibmacro*{date}{\printdate\iffieldundef{origyear}{}{\addspace\mkbibparens{\bibstring{reprint}\addspace\printorigdate}}}
 
 
 \renewbibmacro*{cite:name}{%
