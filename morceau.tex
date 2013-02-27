@@ -60,7 +60,14 @@
 \DeclareLabelname[book, bookinbook, bookinarticle]{author}
 
 
-\renewbibmacro*{date}{\printdate\iffieldundef{origyear}{}{\addspace\mkbibparens{\bibstring{reprint}\addspace\printorigdate}}}
+\renewbibmacro*{date}{\printdate\iffieldundef{origyear}{}{\addspace\mkbibparens{\bibstring{reprint}%
+  \printlist{origlocation}%
+  \iflistundef{origpublisher}
+    {\setunit*{\addcomma\space}}
+    {\setunit*{\addcolon\space}}%
+  \printlist{origpublisher}%
+  \setunit*{\addcomma\space}%
+  \printfield\printorigdate}}}
 
 
 \renewbibmacro*{cite:name}{%
