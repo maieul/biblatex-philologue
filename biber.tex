@@ -13,3 +13,7 @@
 	\noinherit{shortseries}
 	\noinherit{number}
 }
+\DeclareDataInheritance{article}{bookinarticle,inarticle}{
+	\inherit{author}{bookauthor}% Il faudra modifier quand je saurais comment déclarer des nouveaux champs
+	\inherit{title}{maintitle}
+}
