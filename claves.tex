@@ -1,4 +1,8 @@
 \newcommand{\multiclavesseparator}{\addsemicolon\space}
+\renewbibmacro*{addendum+pubstate}{%
+  \nopunct\printfield{addendum}%
+  \newunit\newblock
+  \printfield{pubstate}}
 \DeclareFieldFormat{addendum}{\mkbibparens{#1}}
 \DeclareSourcemap{
 	\maps[datatype=bibtex]{
