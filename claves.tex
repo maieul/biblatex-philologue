@@ -1,0 +1,36 @@
+\newcommand{\multiclavesseparator}{\addsemicolon\space}
+\DeclareFieldFormat{addendum}{\mkbibparens{#1}}
+\DeclareSourcemap{
+	\maps[datatype=bibtex]{
+		\map[overwrite]{
+			\step[fieldsource=addendum,fieldset=addendum,fieldvalue={\noexpand\multiclavesseparator{}},append]
+			\step[fieldsource=bhg,final]
+			\step[fieldset=addendum,fieldvalue={BHG~},append]
+			\step[fieldset=addendum,origfieldval, append]
+			}
+		\map[overwrite]{
+			\step[fieldsource=bhg,fieldset=addendum,fieldvalue={\noexpand\multiclavesseparator{}},append]
+			\step[fieldsource=cpg,final]
+			\step[fieldset=addendum,fieldvalue={CPG~},append]
+			\step[fieldset=addendum,origfieldval, append]
+		}
+		\map[overwrite]{
+			\step[fieldsource=bhg,fieldset=addendum,fieldvalue={\noexpand\multiclavesseparator{}},append]
+			\step[fieldsource=bhl,final]
+			\step[fieldset=addendum,fieldvalue={BHL~},append]
+			\step[fieldset=addendum,origfieldval, append]
+		}
+		\map[overwrite]{
+			\step[fieldsource=bhg,fieldset=addendum,fieldvalue={\noexpand\multiclavesseparator{}},append]
+			\step[fieldsource=cpl,final]
+			\step[fieldset=addendum,fieldvalue={CPL~},append]
+			\step[fieldset=addendum,origfieldval, append]
+		}
+		\map[overwrite]{
+			\step[fieldsource=addendum,fieldset=addendum,fieldvalue={\noexpand\multiclavesseparator{}},append]
+			\step[fieldsource=cant,final]
+			\step[fieldset=addendum,fieldvalue={CANT~},append]
+			\step[fieldset=addendum,origfieldval, append]
+		}
+	}	
+}
