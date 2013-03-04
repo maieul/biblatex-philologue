@@ -1,4 +1,4 @@
-\newcommand{\multiclavesseparator}{\addsemicolon\space}
+\newcommand{\multiclavesseparator}{\addsemicolon\ifpunct{\addspace}{}}
 \renewbibmacro*{addendum+pubstate}{%
   \iffieldundef{addendum}{}{\nopunct}\printfield{addendum}\printfield{addendum}%
   \newunit\newblock
