@@ -1,1 +1,10 @@
-\defbibcheck{principaux}{\ifentrytype{bookrepro}{\skipentry}{}\iffieldundef{titleaddon}{}{\iffieldundef{crossref}{}{\skipentry}}}
+\defbibcheck{principaux}{%
+	\ifentrytype{bookrepro}{\skipentry}{}%
+	\iffieldundef{titleaddon}{}{\iffieldundef{crossref}{}{\skipentry}}%
+	%pour éviter de mettre les sous volumes d'un  mvbook
+	\iffieldundef{crossref}{}{%
+		\iffieldundef{volume}{}{%
+			\ifentrytype{book}{\skipentry}{}%
+			}
+		}%
+	}%
