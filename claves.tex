@@ -1,6 +1,6 @@
 \newcommand{\multiclavesseparator}{\addsemicolon\ifpunct{\addspace}{}}
 \renewbibmacro*{addendum+pubstate}{%
-  \iffieldundef{addendum}{}{\nopunct}\printfield{addendum}\printfield{addendum}%
+  \iffieldundef{addendum}{}{\nopunct\printfield{addendum}}%
   \newunit\newblock
   \printfield{pubstate}}
 \DeclareFieldFormat{addendum}{\mkbibparens{#1}}
