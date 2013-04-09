@@ -113,9 +113,9 @@
 
 
 \renewbibmacro*{series+number}{%
-  \iffieldundef{year}{\iffieldundef{shortseries}{\printfield{series}}{\printfield{shortseries}}%
+  \iffieldundef{shortseries}{\printfield{series}}{\printfield{shortseries}}%
   \setunit*{\addspace}%
-  \printfield{number}\newunit}{}%
+  \printfield{number}\newunit%
   }
 
 
