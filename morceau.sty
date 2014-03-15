@@ -1,17 +1,4 @@
-
-\renewbibmacro{begentry}{\iffieldundef{titleaddon}{}{%
-	\iffieldxref{entrytype}{}%
-		{\BibliographyWarning{Sous-entrée n'étant pas du même type que l'entrée mère}}%
-		}%
-	\iffieldundef{crossref}{\iffieldundef{titleaddon}{}{\BibliographyWarning{Titleaddon sans crossref}}}{}%
-}
 \renewbibmacro*{cite}{%
-\iffieldundef{crossref}{}{\iffieldundef{crossref}{}%
-				{\iffieldundef{titleaddon}{}%
-					{\iffieldxref{entrytype}{%
-						\savefield{crossref}{\crossref}\restorefield{entrykey}{\crossref}%
-						}{}%
-		}}}%
   \usebibmacro{cite:citepages}%
   \global\togglefalse{cbx:fullcite}%
   \global\togglefalse{cbx:loccit}%
