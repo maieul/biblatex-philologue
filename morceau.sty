@@ -1,7 +1,7 @@
 \xpatchbibmacro%
 	{cite:title}%
 	{\printfield[citetitle]{labeltitle}}%
-	{\ifboolexpr{test{\ifsingletitle} and not (test {\iffieldundef{author}})}{}{\printfield[citetitle]{labeltitle}}}%
+	{\ifboolexpr{test{\ifsingletitle} and not test {\ifnameundef{labelname}}}{}{\printfield[citetitle]{labeltitle}}}%
 	{}%
 	{}%
 
