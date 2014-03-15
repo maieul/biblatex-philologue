@@ -1,31 +1,11 @@
-\renewbibmacro*{cite:title}{%
-\usebibmacro{cite:full:citepages}%
-  \printtext[bibhyperlink]{%
-    \ifboolexpr{test{\ifsingletitle} and not (test {\iffieldundef{author}} and test{\iffieldequalstr{usera}{1}})}{}{\usebibmacro{title}}%
-    \setunit{\nametitledelim}%
-    \iffieldequalstr{usera}{1}{\usebibmacro{byeditor+others}}{}%
-    \bibstring[\mkibid]{opcit}}%
-  \iffieldequalstr{usera}{1}{%
-  	\setunit{\bibpagespunct}%
-  	\iffieldundef{titleaddon}{}{\setunit{\bibpagespunct}%
-	\printfield{addendum}\newunit%
-  	\printfield{pages}}%
-	}{}%
-}
+\xpatchbibmacro%
+	{cite:title}%
+	{\printfield[citetitle]{labeltitle}}%
+	{\ifboolexpr{test{\ifsingletitle} and not (test {\iffieldundef{author}})}{}{\printfield[citetitle]{labeltitle}}}%
+	{}%
+	{}%
 
-\renewbibmacro*{cite:ibid}{%
-\usebibmacro{cite:full:citepages}%
-  \printtext{%
-    \bibhyperlink{cite\csuse{cbx@lastcite@\thefield{entrykey}}}{%
-      \bibstring[\mkibid]{ibidem}}}%
-      \setunit{\bibpagespunct}%
-  	\printfield{titleaddon}%
-	\iffieldundef{titleaddon}{}{\setunit{\bibpagespunct}%
-  	\printfield{pages}}%
-  \ifloccit
-    {\global\toggletrue{cbx:loccit}}
-    {}}
-	       
+
 \DeclareLabelname[book, bookinbook, bookinarticle]{\field{author}}
 
 
