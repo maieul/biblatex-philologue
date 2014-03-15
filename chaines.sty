@@ -2,7 +2,15 @@
 \NewBibliographyString{notice}
 \NewBibliographyString{notices}
 \DefineBibliographyStrings{french}{%
-	byeditor		= \iffieldequalstr{usera}{1}{{éd\adddot}}{{dir\adddotspace}},
+	byeditor		= \ifboolexpr{(%
+					test {\iffieldequalstr{entrytype}{bookinbook}}%
+					or test {\iffieldequalstr{entrytype}{inbook}}%
+					or test {\iffieldequalstr{entrytype}{book}}%
+					or test {\iffieldequalstr{entrytype}{mvbook}}%
+					or test {\iffieldequalstr{entrytype}{bookinarticle}}%
+			)%
+			}%
+		{{éd\adddot}}{{dir\adddotspace}},
 	byeditortr 		= {éd\adddotspace et trad\addot},
 	byeditorco		= {éd\adddotspace et com\addot},
 	byeditortranin	= {éd.\adddot, trad\adddot, annot\adddotspace et intr\adddot},
