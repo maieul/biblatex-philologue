@@ -1,4 +1,8 @@
-\RequirePackage[sorting=anonyme,backend=biber,indexing=false,bibstyle=biblatex-manuscripts-philology/manuscripts,citestyle=verbose-trad2,singletitle=true,mincrossrefs=0,citepages=omit,useprefix=true,language=french]{biblatex}
+\RequirePackage[
+ 	tools={realauthor,manuscripts},
+	bibstyle=verbose
+]{biblatex-multiple-dm}
+\RequirePackage[sorting=anonyme,backend=biber,indexing=false,bibstyle=multiple-dm,citestyle=verbose-trad2,singletitle=true,mincrossrefs=0,citepages=omit,useprefix=true,language=french]{biblatex}
 \RequirePackage{xpatch}
 \RequirePackage{biblatex-philologue/final}				% Pour afficher correctement la bibliographie finale
 \RequirePackage{biblatex-philologue/signes_typo}			% Les différents signes typo utilisées pour indiquer les élèments
