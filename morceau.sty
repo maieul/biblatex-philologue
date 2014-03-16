@@ -5,9 +5,7 @@
 	{}%
 	{}%
 
-
 \DeclareLabelname[book, bookinbook, bookinarticle,mvbook,inbook]{\field{author}}
-
 
 \renewbibmacro*{date}{\printdate\iffieldundef{origyear}{}{%
 \addspace\mkbibparens{\bibstring{reprint}\addspace%
@@ -18,11 +16,6 @@
   \printlist{origpublisher}%
   \setunit*{\addcomma\space}%
   \printorigdate}}}
-
-
-
-
-\makeatletter
 
  \DeclareNameFormat{labelname}{%
   \ifcase\value{uniquename}%
@@ -35,28 +28,29 @@
     \usebibmacro{name:first-last}{#1}{#3}{#5}{#7}%
   \fi%
   \usebibmacro{name:andothers}}
+
+\xpatchbibmacro%
+	{author}%
+	{\printnames{author}}%
+	{\ifthenelse{\ifciteidem\AND\ifcitation}{\usebibmacro{cite:idem}}{\printnames{author}}}%
+	{}
+	{}
+
 %
 % 
-  \renewbibmacro*{author}{%
-\ifboolexpr{%
-    test \ifuseauthor%
-    and%
-    not test {\ifnameundef{author}}%
-  }%
-    {\usebibmacro{bbx:dashcheck}%
-       {\bibnamedash}%
-       {\ifthenelse{\ifciteidem\AND\ifcitation}{\usebibmacro{cite:idem}}{\printnames{author}}%
-	\setunit{\addcomma\space}%
-	\usebibmacro{bbx:savehash}}%
-     \usebibmacro{authorstrg}}%
-    {\global\undef\bbx@lasthash}}
-
-\makeatother
-
-
-
-
-
+%  \renewbibmacro*{author}{%
+%\ifboolexpr{%
+%    test \ifuseauthor%
+%    and%
+%    not test {\ifnameundef{author}}%
+%  }%
+%    {\usebibmacro{bbx:dashcheck}%
+%       {\bibnamedash}%
+%       {\ifthenelse{\ifciteidem\AND\ifcitation}{\usebibmacro{cite:idem}}{\printnames{author}}%
+%	\setunit{\addcomma\space}%
+%	\usebibmacro{bbx:savehash}}%
+%     \usebibmacro{authorstrg}}%
+%    {\global\undef\bbx@lasthash}}
 
 
 \renewbibmacro*{series+number}{%
