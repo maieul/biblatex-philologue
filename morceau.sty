@@ -1,3 +1,6 @@
+
+
+% Gestion des op.cit
 \xpatchbibmacro%
 	{cite:title}%
 	{\printfield[citetitle]{labeltitle}}%
@@ -5,8 +8,10 @@
 	{}%
 	{}%
 
+% Label
 \DeclareLabelname[book, bookinbook, bookinarticle,mvbook,inbook]{\field{author}}
 
+% Date de réimpression
 \renewbibmacro*{date}{\printdate\iffieldundef{origyear}{}{%
 \addspace\mkbibparens{\bibstring{reprint}\addspace%
   \printlist{origlocation}%
@@ -17,6 +22,7 @@
   \setunit*{\addcomma\space}%
   \printorigdate}}}
 
+% Formatage des auteurs
  \DeclareNameFormat{labelname}{%
   \ifcase\value{uniquename}%
     \usebibmacro{name:last}{#1}{#3}{#5}{#7}%
@@ -36,23 +42,7 @@
 	{}
 	{}
 
-%
-% 
-%  \renewbibmacro*{author}{%
-%\ifboolexpr{%
-%    test \ifuseauthor%
-%    and%
-%    not test {\ifnameundef{author}}%
-%  }%
-%    {\usebibmacro{bbx:dashcheck}%
-%       {\bibnamedash}%
-%       {\ifthenelse{\ifciteidem\AND\ifcitation}{\usebibmacro{cite:idem}}{\printnames{author}}%
-%	\setunit{\addcomma\space}%
-%	\usebibmacro{bbx:savehash}}%
-%     \usebibmacro{authorstrg}}%
-%    {\global\undef\bbx@lasthash}}
-
-
+% Series en version short
 \renewbibmacro*{series+number}{%
   \iffieldundef{shortseries}{\printfield{series}}{\printfield{shortseries}}%
   \setunit*{\addspace}%
