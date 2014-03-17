@@ -1,10 +1,19 @@
+% Déplacement des claves
+\xpatchbibmacro{addendum+pubstate}{\printfield{addendum}}{}{}{}
 
+\xpatchbibmacro{title}{\newunit}{\usebibmacro{addendum}}{}{}
+
+\newbibmacro{addendum}{%
+	\nopunct%
+	\setunit{\addspace}%
+	\printfield{addendum}
+	\newunit}
 
 % Gestion des op.cit
 \xpatchbibmacro%
 	{cite:title}%
 	{\printfield[citetitle]{labeltitle}}%
-	{\ifboolexpr{test{\ifsingletitle} and not test {\ifnameundef{labelname}}}{}{\printfield[citetitle]{labeltitle}}}%
+	{\ifboolexpr{test{\ifsingletitle} and not test {\ifnameundef{labelname}}}{}{\printfield[citetitle]{labeltitle}\usebibmacro{addendum}}}%
 	{}%
 	{}%
 
