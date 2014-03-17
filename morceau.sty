@@ -4,9 +4,9 @@
 \xpatchbibmacro{title}{\newunit}{\usebibmacro{addendum}}{}{}
 
 \newbibmacro{addendum}{%
-	\nopunct%
-	\setunit{\addspace}%
-	\printfield{addendum}
+	\iffieldundef{addendum}{}{\nopunct%
+		\setunit{\addspace}%
+		\printfield{addendum}}%
 	\newunit}
 
 % Gestion des op.cit
