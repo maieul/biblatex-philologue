@@ -23,7 +23,9 @@
 % Date de réimpression
 \renewbibmacro*{date}{\printdate\iffieldundef{origyear}{}{%
 \addspace\mkbibparens{%
-  \iffieldundef{origlocation}{\bibstring{origpubin}}{\bibstring{reprint}}%
+  \ifboolexpr{%
+  	(test{\iflistundef{origlocation}} and test {\iflistundef{origpublisher}})%
+  }{\bibstring{origpubin}}{\bibstring{reprint}}%
   \addspace%
   \printlist{origlocation}%
   \iflistundef{origpublisher}
