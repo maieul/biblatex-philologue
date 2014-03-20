@@ -1,7 +1,13 @@
-\RequirePackage[
- 	tools={realauthor,manuscripts},
-	bibstyle=verbose
-]{biblatex-multiple-dm}
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions {family=@biblatexphilologue@,prefix=biblatexphilologue@}
+\DeclareBoolOption[false]{noautoshorthand}
+\ProcessKeyvalOptions*
+
+\ifbiblatexphilologue@noautoshorthand
+	\RequirePackage[tools={realauthor,manuscripts-noautoshorthand},bibstyle=verbose]{biblatex-multiple-dm}
+\else
+	\RequirePackage[tools={realauthor,manuscripts},bibstyle=verbose]{biblatex-multiple-dm}
+\fi
 \RequirePackage[sorting=anonyme,backend=biber,indexing=false,bibstyle=multiple-dm,citestyle=verbose-trad2,singletitle=true,mincrossrefs=0,citepages=omit,useprefix=true,language=french]{biblatex}
 \RequirePackage{xpatch}
 \RequirePackage{biblatex-philologue/claves}				% Pour les claves
