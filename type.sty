@@ -2,7 +2,7 @@
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{author/translator+others}%
-  \setunit{\labelnamepunct}\newblock
+  \iffieldundef{author}{}{\setunit{\labelnamepunct}\newblock}%
   \usebibmacro{title}%
   \newunit
   \printlist{language}%
