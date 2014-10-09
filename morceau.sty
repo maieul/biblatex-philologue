@@ -1,3 +1,7 @@
+% Afficher qu'une seule infos sur les volumes
+
+\DeclareFieldFormat{volumes}{\iffieldundef{volume}{#1~\bibstring{volumes}}{}}
+
 % Indication des planches
 \newcommand{\planche}{et planche}
 \newcommand{\planches}{et planches}
