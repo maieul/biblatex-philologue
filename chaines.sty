@@ -21,7 +21,11 @@
 	byeditortr		= {éd\adddotspace et trad\adddot},
 	notice 		= {not.},
 	notices 		= {not.},
-	opcit 			= \iffieldequalstr{entrytype}{article}{art\adddotspace cit\adddot}{op\adddotspace cit\adddot}
+	opcit 			= \ifboolexpr{(%
+	  				test{\iffieldequalstr{entrytype}{article}}%
+					or test{\iffieldequalstr{entrytype}{incollection}}%
+				      )}%
+				  {art\adddotspace cit\adddot}{op\adddotspace cit\adddot}
 	paragraph 		= {§},
 	paragraphs 		= {§},
 	reprint			= {réimpr\adddotspace de \addcolon}
