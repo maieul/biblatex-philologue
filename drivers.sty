@@ -1,45 +1,16 @@
-\DeclareBibliographyDriver{inbook}{%
-  \usebibmacro{bibindex}%
-  \usebibmacro{begentry}%
-  \usebibmacro{author/translator+others}%
-  \ifnameundef{author}{}{\setunit{\labelnamepunct}\newblock}%
-  \usebibmacro{title}%
+\xpatchbibdriver{inbook}{\usebibmacro{byeditor+others}%
+  \newunit\newblock
+  \printfield{edition}%
   \newunit
-  \printlist{language}%
-  \newunit\newblock
-  \usebibmacro{byauthor}%
-  \newunit\newblock
-  \usebibmacro{in:}%
-  \usebibmacro{bybookauthor}%
-  \newunit\newblock
-  \usebibmacro{maintitle+booktitle}%
+  \iffieldundef{maintitle}
+    {\printfield{volume}%
+     \printfield{part}}
+    {}%
+  \newunit}{\usebibmacro{maintitle+booktitle}%
     \newunit
   \iffieldundef{maintitle}% déplacé par rapport aux styles standards
     {\printfield{volume}%
      \printfield{part}}
     {}%
   \newunit\newblock
-  \usebibmacro{byeditor+others}%
-  \newunit\newblock
-  \printfield{edition}%
-  \newunit
-  \printfield{volumes}%
-  \newunit\newblock
-  \usebibmacro{series+number}%
-  \newunit\newblock
-  \printfield{note}%
-  \newunit\newblock
-  \usebibmacro{publisher+location+date}%
-  \newunit\newblock
-  \usebibmacro{chapter+pages}%
-  \newunit\newblock
-  \iftoggle{bbx:isbn}
-    {\printfield{isbn}}
-    {}%
-  \newunit\newblock
-  \usebibmacro{doi+eprint+url}%
-  \newunit\newblock
-  \usebibmacro{addendum+pubstate}%
-  \setunit{\bibpagerefpunct}\newblock
-  \usebibmacro{pageref}%
-  \usebibmacro{finentry}}
+  \usebibmacro{byeditor+others}}{}{}
