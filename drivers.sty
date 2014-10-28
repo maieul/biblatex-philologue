@@ -1,4 +1,7 @@
-\xpatchbibdriver{inbook}{\usebibmacro{byeditor+others}%
+\xpatchbibdriver{inbook}%
+%Le morceau remplacé
+{%
+  \usebibmacro{byeditor+others}%
   \newunit\newblock
   \printfield{edition}%
   \newunit
@@ -6,11 +9,20 @@
     {\printfield{volume}%
      \printfield{part}}
     {}%
-  \newunit}{\usebibmacro{maintitle+booktitle}%
-    \newunit
-  \iffieldundef{maintitle}% déplacé par rapport aux styles standards
+  \newunit
+}%
+%Le morceau remplacant
+{%
+  \iffieldundef{maintitle}%
     {\printfield{volume}%
      \printfield{part}}
     {}%
+  \usebibmacro{byeditor+others}%
   \newunit\newblock
-  \usebibmacro{byeditor+others}}{}{}
+  \printfield{edition}%
+  \newunit
+  \newunit
+}%
+%et pour finir les résultats
+{}
+{}
