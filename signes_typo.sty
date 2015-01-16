@@ -13,5 +13,7 @@
 \renewcommand{\moreinterpunct}{\addsemicolon\addspace}
 \DeclareFieldFormat{shorthandwidth}{\textbf{#1}}
 % Formatz 
-\def\bibrangedash{%
+\DefineBibliographyExtras{french}{%
+  \def\bibrangedash{%
     \hyphen\penalty\hyphenpenalty}% breakable dash
+}
