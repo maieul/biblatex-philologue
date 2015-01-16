@@ -24,6 +24,10 @@
 	{}%
 	{}%
 
+% Ibidem, même si on est dans des citations multiple
+
+\ExecuteBibliographyOptions{ibidtracker=context}
+
 % Date de réimpression
 \renewbibmacro*{date}{\printdate\iffieldundef{origyear}{}{%
 \addspace\mkbibparens{%
